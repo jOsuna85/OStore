@@ -40,6 +40,15 @@ class MainActivity : AppCompatActivity() {
         findViewById<MaterialButton>(R.id.btnSend).setOnClickListener {
             val data = findViewById<TextInputEditText>(R.id.etData).text.toString()
             dataRef.setValue(data)
+                .addOnSuccessListener {
+                    Toast.makeText(this@MainActivity, "Enviado...", Toast.LENGTH_LONG).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this@MainActivity, "Error al enviar.", Toast.LENGTH_LONG).show()
+                }
+                .addOnCompleteListener {
+                    Toast.makeText(this@MainActivity, "Terminado.", Toast.LENGTH_LONG).show()
+                }
         }
         findViewById<MaterialButton>(R.id.btnSend).setOnLongClickListener {
             dataRef.removeValue()
