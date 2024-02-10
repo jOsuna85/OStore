@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity() {
             val data = findViewById<TextInputEditText>(R.id.etData).text.toString()
             dataRef.setValue(data)
         }
+        findViewById<MaterialButton>(R.id.btnSend).setOnLongClickListener {
+            dataRef.removeValue()
+            true
+        }
 
     }
 }
